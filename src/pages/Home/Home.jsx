@@ -1,10 +1,9 @@
-import React from 'react';
-import ErrorPage from '../ErrorPage/ErrorPage';
+import Slider from './Slider/Slider';
 
 const Home = () => {
     return (
         <div>
-        
+        <Slider></Slider>
         </div>
     );
 };
