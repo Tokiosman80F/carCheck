@@ -1,12 +1,16 @@
 import AboutUs from './AboutUs/AboutUs';
+import Nap from './Nap/Nap';
+import Service from './Service/Service';
 import Slider from './Slider/Slider';
 
 const Home = () => {
     return (
-        <div>
+        <>
         <Slider></Slider>
         <AboutUs></AboutUs>
-        </div>
+        <Service></Service>
+        <Nap></Nap>
+        </>
     );
 };
 

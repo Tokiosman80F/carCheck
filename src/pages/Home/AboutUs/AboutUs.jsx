@@ -4,11 +4,11 @@ import SectionHeader from "../../Shared/SectionHeader/SectionHeader";
 
 const AboutUs = () => {
   return (
-    <div className="flex justify-between items-center my-10 ">
+    <div className="flex justify-between items-center mt-32 ">
       {/* img */}
       <div className=" w-2/3 relative ">
-        <img src={person} className=" w-4/6" />
-        <img src={parts} alt="" className="absolute -bottom-20 right-10 w-1/2 rounded-xl border-8 border-white" />
+        <img src={person} className=" w-5/6" />
+        <img src={parts} alt="" className="absolute -bottom-10 right-10 w-1/2 rounded-xl border-8 border-white" />
       </div>
       {/* text */}
       <div className="w-1/2">
@@ -21,6 +21,7 @@ const AboutUs = () => {
 
         <button className="btn--primary mt-10">Get More Info</button>
       </div>
+      
     </div>
   );
 };
