@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.active{
-    @apply bg-red-400
+.btn--primary{
+    @apply capitalize  btn  border-none bg-primaryColor text-white hover:bg-dark1 
 }

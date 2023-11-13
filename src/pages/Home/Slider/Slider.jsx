@@ -38,7 +38,7 @@ const Slider = () => {
     },
   ];
   return (
-    <div className="carousel w-full h-[85vh]">
+    <div className="carousel w-full h-[85vh] my-4">
       {slidersInfo.map((slider, index) => (
         <div
           key={index}
@@ -56,7 +56,7 @@ const Slider = () => {
                 {slider.description}
               </p>
               <div >
-                <button className="capitalize btn  border-none bg-primaryColor text-white hover:bg-dark1 ">
+                <button className="btn--primary">
                   Discover More
                 </button>
                 <button className="capitalize btn btn-outline  text-white border-white bg-transparent mx-5">
@@ -69,13 +69,13 @@ const Slider = () => {
           <div className="absolute flex justify-end gap-5 transform  right-20 top-[80%]">
             <a
               href={slider.buttonBack}
-              className="btn btn-circle backdrop-blur-sm  bg-white/30 text-white bg-primaryColor "
+              className="btn btn-circle backdrop-blur-md bg-white/30 text-white hover:bg-primaryColor "
             >
               ❮
             </a>
             <a
               href={slider.buttonForward}
-              className="btn btn-circle bg-primaryColor text-white border-none hover:bg-primaryColor"
+              className="btn btn-circle bg-primaryColor text-white border-none hover:text-black "
             >
               ❯
             </a>
