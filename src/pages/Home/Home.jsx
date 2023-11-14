@@ -1,4 +1,5 @@
 import AboutUs from './AboutUs/AboutUs';
+import ChooseUs from './ChooseUs/ChooseUs';
 import Nap from './Nap/Nap';
 import Product from './Product/Product';
 import Service from './Service/Service';
@@ -14,6 +15,7 @@ const Home = () => {
         <Nap></Nap>
         <Product></Product>
         <Teams></Teams>
+        <ChooseUs></ChooseUs>
         </>
     );
 };

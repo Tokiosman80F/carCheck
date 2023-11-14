@@ -28,7 +28,7 @@ const TeamsCard = () => {
 
   };
   return (
-    <div className="px-60 mb-52">
+    <div className="px-60">
     <Slider {...settings}>
         {teamMembers.map((member, index) => (
           <div key={index} className="card w-44 shadow-2xl py-4">
