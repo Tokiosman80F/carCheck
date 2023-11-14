@@ -47,7 +47,7 @@ const Header = () => {
         <ul className="menu  menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn btn-outline capitalize  border-primaryColor text-primaryColor hover:bg-primaryColor hover:text-white hover:border-none tr">Login</a>
+        <Link to="/login" className="btn btn-outline capitalize  border-primaryColor text-primaryColor hover:bg-primaryColor hover:text-white hover:border-none ">Login</Link>
       </div>
     </div>
   );
