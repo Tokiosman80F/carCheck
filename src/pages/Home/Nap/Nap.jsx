@@ -16,11 +16,11 @@ const Nap = () => {
   ];
   console.log(napArray);
   return (
-    <div className="mt-36 mb-5 py-20 rounded-2xl text-black bg-black">
+    <div className="md:mt-36 mb-5 py-20 rounded-2xl text-black bg-black">
     
-      <div className="flex items-center justify-center gap-5 text-white">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-5 text-white">
         {napArray.map((item, index) => (
-          <div key={index} className="flex justify-center items-center gap-5">
+          <div key={index} className="flex flex-col md:flex-row justify-center items-center gap-5">
             <div className="text-4xl text-primaryColor ">{item.img }</div>
             <div>
               <p>{item.subtitle}</p>

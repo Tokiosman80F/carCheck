@@ -21,25 +21,25 @@ const TeamsCard = () => {
     // centerMode: true,
     infinite: true,
     centerPadding: "60px",
-    slidesToShow: 3,
+    slidesToShow: 2,
     speed: 50,
     arrows:true
 
 
   };
   return (
-    <div className="px-60">
+    <div className="md:px-60">
     <Slider {...settings}>
         {teamMembers.map((member, index) => (
-          <div key={index} className="card w-44 shadow-2xl py-4">
-            <figure className="px-10 pt-10">
+          <div key={index} className="card md:w-44 shadow-2xl py-4">
+            <figure className="md:px-10 pt-10">
               <img src={member.image} alt="Shoes" className="rounded-xl" />
             </figure>
             <div className="card-body items-center text-center">
               <h2 className="card-title">{member.title}</h2>
               <p className="">{member.position}</p>
             </div>
-            <div className="flex justify-evenly items-center px-10">
+            <div className="flex flex-col md:flex-row justify-evenly items-center md:px-10">
               <img src={fb} alt="" />
               <img src={linkdin} alt="" />
               <img src={twitter} alt="" />

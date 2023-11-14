@@ -48,18 +48,18 @@ const Slider = () => {
           <img src={slider.image} className="w-full  rounded-2xl  " />
           {/* text */}
           <div className="absolute rounded-2xl  text-white h-full w-full bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0.00) 100%)] ">
-            <div className="w-1/3 space-y-10 pt-20 mx-10 ">
-              <h1 className="text-6xl font-bold">
+            <div className="lg:w-1/3 space-y-10 pt-20 md:mx-10 ">
+              <h1 className="text-2xl lg:text-6xl font-bold">
                 {slider.headLine}
               </h1>
-              <p className="text-lg ">
+              <p className="md:text-lg ">
                 {slider.description}
               </p>
               <div >
                 <button className="btn--primary">
                   Discover More
                 </button>
-                <button className="capitalize btn btn-outline  text-white border-white bg-transparent mx-5">
+                <button className="capitalize btn btn-outline  text-white border-white bg-transparent md:mx-5">
                   Latest Project
                 </button>
               </div>

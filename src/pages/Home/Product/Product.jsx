@@ -16,7 +16,7 @@ const Product = () => {
     { img: product6, title: "Car UPS Plug", price: "$20.00" },
   ];
   return (
-    <div className="mt-36">
+    <div className="md:mt-36">
       <SectionHeader
         title="Popular Products"
         subTitle="Browse Our Products"
@@ -26,7 +26,7 @@ const Product = () => {
         {products.map((product, index) => (
           <div
             key={index}
-            className="card card-compact w-80 bg-base-100 shadow-2xl"
+            className="card card-compact md:w-80 bg-base-100 shadow-2xl"
           >
             <figure>
               <img src={product.img} className="w-32" />

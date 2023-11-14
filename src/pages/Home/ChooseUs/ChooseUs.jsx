@@ -14,18 +14,20 @@ const ChooseUs = () => {
     { img: img6, title: "Timely Delivery" },
   ];
   return (
-    <div className="mt-36">
+    <div className="my-10 md:my-36 ">
       <SectionHeader
         title="Core Features"
         subTitle="Why Choose Us"
         description="the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. "
       ></SectionHeader>
-      <div className="flex justify-around items-center mt-12">
+      <div className="flex flex-col md:flex-row justify-around items-center mt-12">
         {details.map((detail, id) => (
-          <div key={id} className=" hover:bg-blue-500 hover:text-white p-5 rounded-2xl">
+          <div
+            key={id}
+            className=" hover:bg-blue-500 hover:text-white p-5 rounded-2xl transition ease-in-out hover:scale-125 delay-100"
+          >
             <div>
-              
-              <img src={detail.img} alt="" className="mx-auto py-2"/>
+              <img src={detail.img} alt="" className="mx-auto py-2" />
             </div>
             <p>{detail.title}</p>
           </div>

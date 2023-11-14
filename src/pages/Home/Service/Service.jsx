@@ -25,8 +25,8 @@ const Service = () => {
       ></SectionHeader>
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => (
-          <div key={service._id} className="card w-96 bg-base-100 shadow-2xl">
-            <figure className="px-10 pt-10">
+          <div key={service._id} className="card md:w-96 bg-base-100 shadow-2xl">
+            <figure className="md:px-10 pt-10">
               <img src={service.img} className="rounded-xl" />
             </figure>
             <div className="card-body text-center">

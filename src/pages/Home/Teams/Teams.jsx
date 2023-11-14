@@ -5,7 +5,7 @@ import TeamsCard from "./TeamsCard";
 const Teams = () => {
 
   return (
-    <div className="mt-36">
+    <div className="md:mt-36">
       <SectionHeader
         title="Team"
         subTitle="Meet Our Team"
