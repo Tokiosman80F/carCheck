@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import logImage from "../../assets/login/login.svg";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const LoginPage = () => {
+  const {loginUser}=useContext(AuthContext)
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -10,6 +13,12 @@ const LoginPage = () => {
     const password = form.password.value;
     const userInfo = { email, password };
     console.log(userInfo);
+    loginUser(email,password).then(userCredential=>{
+      const user=userCredential.user
+      console.log(user);
+    }).catch(error=>{
+      console.log(error.message)
+    })
   };
   return (
     <div>
