@@ -1,6 +1,15 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Header = () => {
+  const { user, logoutUser } = useContext(AuthContext);
+  const handleLogout = () => {
+    logoutUser()
+      .then(() => console.log("sign out successfully"))
+      .catch((error) => console.log(error.message));
+  };
+  console.log(user);
   const navItems = (
     <>
       <li className="">
@@ -47,7 +56,27 @@ const Header = () => {
         <ul className="menu  menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login" className="btn btn-outline capitalize  border-primaryColor text-primaryColor hover:bg-primaryColor hover:text-white hover:border-none ">Login</Link>
+        {user ? (
+          <>
+            <button className="rounded-full bg-primaryColor text-white p-2">
+              {user?.email}
+            </button>
+            <Link
+              to="/"
+              onClick={handleLogout}
+              className="ml-5 btn btn-outline capitalize  border-primaryColor text-primaryColor hover:bg-primaryColor hover:text-white hover:border-none "
+            >
+              SignOut
+            </Link>
+          </>
+        ) : (
+          <Link
+            to="/login"
+            className="btn btn-outline capitalize  border-primaryColor text-primaryColor hover:bg-primaryColor hover:text-white hover:border-none "
+          >
+            Login
+          </Link>
+       )}  
       </div>
     </div>
   );

@@ -8,7 +8,6 @@ const RegisterPage = () => {
   const { createUser } = useContext(AuthContext);
   const handleRegister = (e) => {
     e.preventDefault();
-
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
@@ -104,7 +103,7 @@ const RegisterPage = () => {
               </div>
               <p>
                 Already have an account?
-                <Link to='/login' className="text-primaryColor underline">Login </Link>
+                <Link to="/login" className="text-primaryColor underline">Login </Link>
               </p>
             </form>
           </div>
