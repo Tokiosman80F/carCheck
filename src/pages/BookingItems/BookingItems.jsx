@@ -3,6 +3,7 @@ import BookingItemsTable from "./BookingItemsTable";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useState } from "react";
+import Swal from "sweetalert2";
 const BookingItems = () => {
   const { user } = useContext(AuthContext);
   const [bookingOrders, setBookingOrders] = useState([]);
@@ -12,9 +13,43 @@ const BookingItems = () => {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        setBookingOrders(data)
+        setBookingOrders(data);
       });
-  }, [url]);
+  }, [bookingOrders]);
+
+  const handleDeleteOrder = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/booking/${id}`, {
+          method: "DELETE",
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+              const remaining = bookingOrders.filter(
+                (booking) => booking._id !== booking.id
+              );
+              setBookingOrders(remaining);
+            }
+          });
+      }
+    });
+  };
+  const handleConfirmOrder = () => {};
 
   return (
     <div>
@@ -48,6 +83,8 @@ const BookingItems = () => {
                   key={order._id}
                   order={order}
                   index={index}
+                  handleDeleteOrder={handleDeleteOrder}
+                  handleConfirmOrder={handleConfirmOrder}
                 ></BookingItemsTable>
               ))}
             </tbody>

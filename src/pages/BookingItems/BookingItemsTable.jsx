@@ -1,7 +1,12 @@
 import React from "react";
 import { FaCheck } from "react-icons/fa";
 import { FaDeleteLeft } from "react-icons/fa6";
-const BookingItemsTable = ({ order, index }) => {
+const BookingItemsTable = ({
+  order,
+  index,
+  handleConfirmOrder,
+  handleDeleteOrder,
+}) => {
   const { _id, name, email, date, title, price, img } = order;
   return (
     <tr className="text-lg bg-base-300">
@@ -20,10 +25,16 @@ const BookingItemsTable = ({ order, index }) => {
       <td>{price}</td>
       <td>{date}</td>
       <th className="flex flex-col gap-2 justify-center items-center  ">
-        <button className="btn btn-success btn-sm w-full">
+        <button
+          className="btn btn-success btn-sm w-full"
+          onClick={() => handleConfirmOrder(_id)}
+        >
           <FaCheck /> confirm
         </button>
-        <button className="btn btn-error btn-sm w-full">
+        <button
+          className="btn btn-error btn-sm w-full"
+          onClick={() => handleDeleteOrder(_id)}
+        >
           <FaDeleteLeft />
           delete
         </button>
