@@ -6,7 +6,7 @@ const Service = () => {
   const [services, setService] = useState([]);
 
   useEffect(() => {
-    fetch("service.json")
+    fetch("http://localhost:5000/services")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -38,7 +38,8 @@ const Service = () => {
                   Price:${service.price}
                 </div>
                 <Link className="underline font-bold cursor-pointer hover:scale-125 ease-in-out duration-300">See Detail</Link>
-                <FaArrowRightLong className="bg-base-200  text-lg cursor-pointer hover:scale-150 ease-in-out duration-300" />
+                {/* /${service._id} */}
+                <Link to={`/booking/${service._id}`}><FaArrowRightLong className="bg-base-200  text-lg cursor-pointer hover:scale-150 ease-in-out duration-300" /></Link>
               </div>
             </div>
           </div>
