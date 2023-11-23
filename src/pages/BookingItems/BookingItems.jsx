@@ -49,7 +49,46 @@ const BookingItems = () => {
       }
     });
   };
-  const handleConfirmOrder = () => {};
+  const handleConfirmOrder = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      icon: "info",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Confirm it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/booking/${id}`, {
+          method: "PATCH",
+          headers: {
+            'content-type':"application/json",
+          },
+          body: JSON.stringify({ status: "confirm" }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            if (data.modifiedCount > 0) {
+              Swal.fire({
+                title: "Confirm!",
+                text: "Your order has been confirmed.",
+                icon: "success",
+              });
+              const remaining = bookingOrders.filter(
+                (booking) => booking._id !== booking.id
+              );
+              const updatedOrder = bookingOrders.find(
+                (booking) => booking._id === booking.id
+              );
+              updatedOrder.status="confirm"
+              const newBooking=[updatedOrder,...remaining]
+              setBookingOrders(newBooking);
+            }
+          });
+      }
+    });
+  };
 
   return (
     <div>
