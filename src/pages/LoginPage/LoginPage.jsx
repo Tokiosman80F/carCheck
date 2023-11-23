@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const LoginPage = () => {
-  const {loginUser}=useContext(AuthContext)
+  const { loginUser } = useContext(AuthContext);
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -13,12 +13,14 @@ const LoginPage = () => {
     const password = form.password.value;
     const userInfo = { email, password };
     console.log(userInfo);
-    loginUser(email,password).then(userCredential=>{
-      const user=userCredential.user
-      console.log(user);
-    }).catch(error=>{
-      console.log(error.message)
-    })
+    loginUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
   return (
     <div>
@@ -27,10 +29,10 @@ const LoginPage = () => {
           <div className="hidden md:block">
             <img src={logImage} alt="" />
           </div>
-          <div className=" card flex-shrink-0 w-full max-w-sm ">
+          <div className=" card-body text-dark2  card flex-shrink-0 w-full max-w-sm border-2 rounded-2xl">
             <form
               onSubmit={handleLogin}
-              className="card-body text-dark2 border-2  rounded-2xl"
+              className=""
             >
               <h1 className="text-center  text-3xl font-semibold ">Login </h1>
               <div className="form-control">
@@ -58,23 +60,27 @@ const LoginPage = () => {
                 />
               </div>
 
-              <div className="flex items-center gap-2 mt-2">
+              <div className="mt-2 ">
                 <input
                   type="submit"
                   value="Login with Email"
-                  className="btn capitalize text-white bg-primaryColor hover:bg-black"
-                />
-
-                <p className="text-center"> or</p>
-
-                <input
-                  type="submit"
-                  value="Login with google"
-                  className="btn btn-outline capitalize"
+                  className="w-full btn capitalize text-white bg-primaryColor hover:bg-black"
                 />
               </div>
-              <p>New Here? <Link to="/register" className="text-primaryColor underline">Sign Up </Link></p>
             </form>
+            <p className="text-center"> or</p>
+
+            <input
+              type="submit"
+              value="Login with google"
+              className="btn btn-outline capitalize"
+            />
+            <p>
+              New Here?
+              <Link to="/register" className="text-primaryColor underline">
+                Sign Up
+              </Link>
+            </p>
           </div>
         </div>
       </div>

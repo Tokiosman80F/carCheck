@@ -21,6 +21,13 @@ const Header = () => {
       <li>
         <Link to="/">About Us</Link>
       </li>
+      {user ? (
+        <li>
+          <Link to="/bookingItems">Booking Items</Link>
+        </li>
+      ) : (
+        <></>
+      )}
     </>
   );
   return (
@@ -76,7 +83,7 @@ const Header = () => {
           >
             Login
           </Link>
-       )}  
+        )}
       </div>
     </div>
   );

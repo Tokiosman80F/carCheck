@@ -2,8 +2,8 @@ import { useLoaderData } from "react-router-dom";
 import checkoutBg from "../../assets/checkout/checkout.png";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { data } from "autoprefixer";
 import Swal from "sweetalert2";
+
 const Booking = () => {
   const { user } = useContext(AuthContext);
   const bookingInfo = useLoaderData();
@@ -48,6 +48,7 @@ const Booking = () => {
               });
               console.log(data);
             }
+            form.reset();
           });
       }
     });
@@ -58,7 +59,7 @@ const Booking = () => {
         <img src={checkoutBg} alt="" className="w-full" />
         <div className="absolute top-0 bg-black/[.4] w-full h-full rounded-xl">
           <h1 className="text-3xl md:text-7xl font-semibold text-white absolute bottom-[50%] ">
-            Booking Items
+            Booking Your Item 
           </h1>
         </div>
       </div>
