@@ -16,6 +16,19 @@ const LoginPage = () => {
     loginUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        const loggedUser = { email: user.email };
+        fetch(`http://localhost:5000/jwt`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(loggedUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("login page data=>",data);
+            localStorage.setItem("user-Token", data.token);
+          });
         console.log(user);
       })
       .catch((error) => {
@@ -30,10 +43,7 @@ const LoginPage = () => {
             <img src={logImage} alt="" />
           </div>
           <div className=" card-body text-dark2  card flex-shrink-0 w-full max-w-sm border-2 rounded-2xl">
-            <form
-              onSubmit={handleLogin}
-              className=""
-            >
+            <form onSubmit={handleLogin} className="">
               <h1 className="text-center  text-3xl font-semibold ">Login </h1>
               <div className="form-control">
                 <label className="label">

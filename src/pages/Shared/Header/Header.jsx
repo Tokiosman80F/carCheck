@@ -6,7 +6,10 @@ const Header = () => {
   const { user, logoutUser } = useContext(AuthContext);
   const handleLogout = () => {
     logoutUser()
-      .then(() => console.log("sign out successfully"))
+      .then(() => {
+        console.log("sign out successfully");
+        localStorage.removeItem("user-Token")
+      })
       .catch((error) => console.log(error.message));
   };
   console.log(user);
