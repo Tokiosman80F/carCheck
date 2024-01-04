@@ -1,18 +1,28 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logImage from "../../assets/login/login.svg";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const LoginPage = () => {
   const { loginUser } = useContext(AuthContext);
+
+  // for redirecting to selected page
+  let location = useLocation();
+  let navigate = useNavigate();
+  let from = location.state?.from?.pathname || "/";
+
+  // handle user login
+
   const handleLogin = (e) => {
     e.preventDefault();
 
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+
     const userInfo = { email, password };
     console.log(userInfo);
+
     loginUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -26,7 +36,9 @@ const LoginPage = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log("login page data=>",data);
+            console.log("login page data=>", data);
+            // after signIn or login this will redirect it to that page
+            navigate(from, { replace: true });
             localStorage.setItem("user-Token", data.token);
           });
         console.log(user);

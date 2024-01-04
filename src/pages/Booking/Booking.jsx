@@ -28,7 +28,7 @@ const Booking = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes,Confirm it!",
     }).then((result) => {
-      if (result.isConfirmed) {
+      if (result.isConfirmed){ 
         fetch(`http://localhost:5000/booking`, {
           method: "POST",
           headers: {
@@ -51,7 +51,8 @@ const Booking = () => {
             form.reset();
           });
       }
-    });
+    })
+  
   };
   return (
     <div>

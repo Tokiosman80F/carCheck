@@ -4,16 +4,27 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 const BookingItems = () => {
   const { user } = useContext(AuthContext);
   const [bookingOrders, setBookingOrders] = useState([]);
   const url = `http://localhost:5000/booking?email=${user.email}`;
-
+  const navigate=useNavigate()
   useEffect(() => {
-    fetch(url)
+    fetch(url, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("user-Token")}`,
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
-        setBookingOrders(data);
+        if (!data.error) {
+          setBookingOrders(data);
+        }
+        else {
+          navigate('/')
+        }
       });
   }, [bookingOrders]);
 
@@ -62,7 +73,7 @@ const BookingItems = () => {
         fetch(`http://localhost:5000/booking/${id}`, {
           method: "PATCH",
           headers: {
-            'content-type':"application/json",
+            "content-type": "application/json",
           },
           body: JSON.stringify({ status: "confirm" }),
         })
@@ -81,8 +92,8 @@ const BookingItems = () => {
               const updatedOrder = bookingOrders.find(
                 (booking) => booking._id === booking.id
               );
-              updatedOrder.status="confirm"
-              const newBooking=[updatedOrder,...remaining]
+              updatedOrder.status = "confirm";
+              const newBooking = [updatedOrder, ...remaining];
               setBookingOrders(newBooking);
             }
           });
