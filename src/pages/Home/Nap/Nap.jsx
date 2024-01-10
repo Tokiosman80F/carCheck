@@ -14,7 +14,7 @@ const Nap = () => {
       mainInfo: "Liza Street, New York",
     },
   ];
-  console.log(napArray);
+  // console.log(napArray);
   return (
     <div className="md:mt-36 mb-5 py-20 rounded-2xl text-black bg-black">
     

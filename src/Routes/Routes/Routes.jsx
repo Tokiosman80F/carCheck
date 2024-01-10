@@ -6,6 +6,7 @@ import RegisterPage from "../../pages/RegisterPage/RegisterPage";
 import Booking from "../../pages/Booking/Booking";
 import BookingItems from "../../pages/BookingItems/BookingItems";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import AboutPage from "../../pages/AboutPage/AboutPage";
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ export const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
+        path:'/aboutus',
+        element:<AboutPage></AboutPage>
+      },
+      {
         path: "/login",
         element: <LoginPage></LoginPage>,
       },
@@ -25,17 +30,17 @@ export const router = createBrowserRouter([
         element: <RegisterPage></RegisterPage>,
       },
       {
-        path: "booking/:id",
+        path: "/booking/:id",
         element: (
           <PrivateRoute>
             <Booking></Booking>
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(`https://car-check-server.vercel.app/services/${params.id}`),
       },
       {
-        path: "bookingItems",
+        path: "/bookingItems",
         element: (
           <PrivateRoute>
             <BookingItems></BookingItems>

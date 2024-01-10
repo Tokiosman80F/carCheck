@@ -5,7 +5,9 @@ import fb from "../../../assets/team/facebook.svg";
 import linkdin from "../../../assets/team/linkdin.svg";
 import twitter from "../../../assets/team/twitter.svg";
 import Slider from "react-slick";
-import  './style.css'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "./style.css";
 
 const TeamsCard = () => {
   const teamMembers = [
@@ -23,13 +25,37 @@ const TeamsCard = () => {
     centerPadding: "60px",
     slidesToShow: 2,
     speed: 50,
-    arrows:true
-
-
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   return (
-    <div className="md:px-60">
-    <Slider {...settings}>
+    <div className="">
+      <Slider {...settings}>
         {teamMembers.map((member, index) => (
           <div key={index} className="card md:w-44 shadow-2xl py-4">
             <figure className="md:px-10 pt-10">
@@ -46,8 +72,7 @@ const TeamsCard = () => {
             </div>
           </div>
         ))}
-    
-    </Slider>
+      </Slider>
     </div>
   );
 };

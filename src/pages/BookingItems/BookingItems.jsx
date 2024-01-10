@@ -8,25 +8,22 @@ import { useNavigate } from "react-router-dom";
 const BookingItems = () => {
   const { user } = useContext(AuthContext);
   const [bookingOrders, setBookingOrders] = useState([]);
-  const url = `http://localhost:5000/booking?email=${user.email}`;
-  const navigate=useNavigate()
+  const url = `https://car-check-server.vercel.app/booking?email=${user?.email}`;
+  const navigate = useNavigate();
   useEffect(() => {
     fetch(url, {
       method: "GET",
       headers: {
-        authorization: `Bearer ${localStorage.getItem("user-Token")}`,
+        authorization: `Bearer ${localStorage.getItem("User-token")}`,
       },
     })
       .then((response) => response.json())
       .then((data) => {
-        if (!data.error) {
-          setBookingOrders(data);
-        }
-        else {
-          navigate('/')
-        }
+        console.log("inside Data",data);
+        if(!data.error) setBookingOrders(data);
+        else navigate("/")
       });
-  }, [bookingOrders]);
+  }, [url,navigate]);
 
   const handleDeleteOrder = (id) => {
     Swal.fire({
@@ -39,7 +36,7 @@ const BookingItems = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/booking/${id}`, {
+        fetch(`https://car-check-server.vercel.app/booking/${id}`, {
           method: "DELETE",
         })
           .then((response) => response.json())
@@ -70,7 +67,7 @@ const BookingItems = () => {
       confirmButtonText: "Yes, Confirm it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/booking/${id}`, {
+        fetch(`https://car-check-server.vercel.app/booking/${id}`, {
           method: "PATCH",
           headers: {
             "content-type": "application/json",

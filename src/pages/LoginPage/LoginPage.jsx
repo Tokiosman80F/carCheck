@@ -2,6 +2,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import logImage from "../../assets/login/login.svg";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import SocialAccount from "../Shared/SocialAccount/SocialAccount";
+import Swal from "sweetalert2";
 
 const LoginPage = () => {
   const { loginUser } = useContext(AuthContext);
@@ -26,22 +28,16 @@ const LoginPage = () => {
     loginUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        const loggedUser = { email: user.email };
-        fetch(`http://localhost:5000/jwt`, {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(loggedUser),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log("login page data=>", data);
-            // after signIn or login this will redirect it to that page
-            navigate(from, { replace: true });
-            localStorage.setItem("user-Token", data.token);
-          });
-        console.log(user);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Logged In Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          console.log("login page user =>", user);
+          navigate(from, { replace: true });
+        });
       })
       .catch((error) => {
         console.log(error.message);
@@ -90,13 +86,7 @@ const LoginPage = () => {
                 />
               </div>
             </form>
-            <p className="text-center"> or</p>
-
-            <input
-              type="submit"
-              value="Login with google"
-              className="btn btn-outline capitalize"
-            />
+            <SocialAccount></SocialAccount>
             <p>
               New Here?
               <Link to="/register" className="text-primaryColor underline">

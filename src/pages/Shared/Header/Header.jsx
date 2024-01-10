@@ -8,7 +8,6 @@ const Header = () => {
     logoutUser()
       .then(() => {
         console.log("sign out successfully");
-        localStorage.removeItem("user-Token")
       })
       .catch((error) => console.log(error.message));
   };
@@ -18,11 +17,9 @@ const Header = () => {
       <li className="">
         <Link to="/">Home</Link>
       </li>
+      
       <li>
-        <Link to="/service">Service</Link>
-      </li>
-      <li>
-        <Link to="/">About Us</Link>
+        <Link to="/aboutus">About Us</Link>
       </li>
       {user ? (
         <li>
